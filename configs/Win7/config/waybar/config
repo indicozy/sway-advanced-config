@@ -13,6 +13,7 @@
 	"modules-left": [
 		"custom/menu",
 		"wlr/taskbar",
+		"sway/window"
 	],
 	"modules-right": [
 		"sway/mode",
@@ -65,7 +66,7 @@
 "wlr/taskbar": {
 		"all-outputs": false,
 		"format": "{icon}",
-		"icon-theme": "Windows 98 (16 bits)",
+		"icon-theme": "Windows 7 Ultimate",
 		"icon-size": 25,
 		"on-click": "activate",
 		"on-click-right": "minimize",
@@ -76,8 +77,6 @@
 		"format-icons": ["", ""],
 		"on-scroll-up": "light -A 2",
 		"on-scroll-down": "light -U 2"
-	},
-	"sway/window": {
 	},
 	"sway/mode": {
 		"format": "{}",
@@ -106,8 +105,8 @@
 	"pulseaudio": {
 		"format": "{icon} {format_source}",
 		"format-bluetooth": "{icon}{volume}% {format_source}",
-		"format-bluetooth-muted": "{icon} {format_source}",
-		"format-muted": "{format_source}",
+		"format-bluetooth-muted": "婢{icon} {format_source}",
+		"format-muted": "婢 {format_source}",
 		//"format-source": "{volume}%",
 		"format-source": "",
 		"format-source-muted": "",

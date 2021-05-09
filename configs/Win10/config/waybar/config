@@ -7,9 +7,6 @@
 	"margin-right": 0,
 	"margin-left": 0,
 	"margin-bottom":0,
-	"modules-center": [
-		
-	],
 	"modules-left": [
 		"custom/menu",
 		"sway/workspaces",
@@ -79,14 +76,12 @@
 		"on-scroll-up": "light -A 2",
 		"on-scroll-down": "light -U 2"
 	},
-	"sway/window": {
-	},
 	"sway/mode": {
 		"format": "{}",
 	},
 	"tray": {
 		"icon-size": 15,
-		"spacing":5
+		"spacing":3
 	},
 	"sway/window": {
         "format": "{}",
@@ -108,8 +103,8 @@
 	"pulseaudio": {
 		"format": "{icon} {format_source}",
 		"format-bluetooth": "{icon}{volume}% {format_source}",
-		"format-bluetooth-muted": "{icon} {format_source}",
-		"format-muted": "{format_source}",
+		"format-bluetooth-muted": "婢{icon} {format_source}",
+		"format-muted": "婢 {format_source}",
 		//"format-source": "{volume}%",
 		"format-source": "",
 		"format-source-muted": "",

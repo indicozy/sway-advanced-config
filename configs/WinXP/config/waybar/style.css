@@ -99,7 +99,7 @@ window#waybar.bottom {
 	text-shadow: 1px 1px 1px @background;
 }
 #idle_inhibitor,#network, #battery, #memory, #cpu, #backlight, #pulseaudio{
-	font-size: 13px;
+	font-size: 15px;
 }
 #custom-winxp_separator{
 	border-style: solid;
