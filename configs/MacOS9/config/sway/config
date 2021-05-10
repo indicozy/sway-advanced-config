@@ -186,6 +186,7 @@ for_window [app_id="cpupower-gui"] floating enable
 #---- Generic keybinds------------------------------------------------------
 bindsym --to-code
 {
+	$layer1+x				exec killall waybar || exec waybar
 	$layer1+Return			exec $term
 	$layer1+d				exec "rofi -combi-modi drun,ssh -show combi"
 

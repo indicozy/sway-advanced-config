@@ -116,6 +116,7 @@ exec --no-startup-id xset b off
 exec_always killall mako
 exec_always --no-startup-id mako
 exec nm-applet --indicator
+exec_always hybridbar
 #]>#########################################################################
 
 #<[# STARTUP ###############################################################
@@ -148,10 +149,10 @@ client.unfocused        $nofocus $nofocus $titletxt $nofocus  $nofocus
 client.urgent           $nofocus $nofocus $titletxt $nofocus  $nofocus
 
 #--- Bars ------------------------------------------------------------------
-bar
-{
-	swaybar_command	waybar
-}
+# bar
+# {
+# 	swaybar_command	waybar
+# }
 
 #--- Gaps ------------------------------------------------------------------
 gaps inner $gaps_inner
@@ -192,7 +193,8 @@ bindsym --to-code
 	$layer1+Return			exec $term
 	$layer1+d				exec "nwggrid -s 60 -n 4 -f"
 
-	$layer1+c	    		exec killall waybar; exec nwg-dock -f -i 42 -a start -l bottom -p left -x -c "nwggrid -s 60 -n 4 -f" &; exec sleep 2; exec waybar
+	$layer1+c	    		exec nwg-dock -f -i 42 -a start -l bottom -p left -x -c "nwggrid -s 60 -n 4 -f"
+	$layer1+x				exec killall hybridbar || exec hybridbar
 	$layer2+c				reload
 	$layer2+e				exec swaymsg exit
 
