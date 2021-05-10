@@ -102,6 +102,8 @@ input type:touchpad {
 	click_method clickfinger
 }
 
+exec autotiling
+exec_always nwg-dock -f -i 42 -a start -l bottom -p left -x -c "nwggrid -s 60 -n 4 -f"
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec hash dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
@@ -188,8 +190,9 @@ bindsym --to-code
 {
 
 	$layer1+Return			exec $term
-	$layer1+d				exec "rofi -combi-modi drun,ssh -show combi"
+	$layer1+d				exec "nwggrid -s 60 -n 4 -f"
 
+	$layer1+c	    		exec killall waybar; exec nwg-dock -f -i 42 -a start -l bottom -p left -x -c "nwggrid -s 60 -n 4 -f" &; exec sleep 2; exec waybar
 	$layer2+c				reload
 	$layer2+e				exec swaymsg exit
 

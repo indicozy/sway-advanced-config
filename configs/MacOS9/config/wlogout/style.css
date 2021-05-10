@@ -9,6 +9,7 @@ window {
   font-size: 26px;
   animation: fadeIn;
   animation-duration: 0.5s;
+  background-color: #6767a0;
 }
 button, button:focus {
   background-repeat: no-repeat;

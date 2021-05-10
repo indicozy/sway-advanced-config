@@ -100,6 +100,7 @@ input type:touchpad {
 	drag enabled
 	click_method clickfinger
 }
+exec autotiling
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec hash dbus-update-activation-environment 2>/dev/null && \
 	 dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
@@ -184,7 +185,7 @@ for_window [app_id="cpupower-gui"] floating enable
 bindsym --to-code
 {
 	$layer1+Return			exec $term
-	$layer1+d				exec "rofi -combi-modi drun,ssh -show combi"
+	$layer1+d				exec "nwg-menu -d"
 
 	$layer2+c				reload
 	$layer2+e				exec swaymsg exit
@@ -210,7 +211,7 @@ bindsym --to-code
 	$layer1+t exec thunar
 
 	$layer1+Escape			exec $lock
-	$layer2+Escape			exec wlogout
+	$layer2+Escape			exec nwgbar
 	
 }
 

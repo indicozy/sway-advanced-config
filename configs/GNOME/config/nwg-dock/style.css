@@ -1,0 +1,38 @@
+window {
+  /*background-color: rgba (0, 0, 0, 0.8);*/
+  background: rgba(0,3,10,.2);
+  /*opacity: 0.9;*/
+	/* border-radius: 10px; */
+	/* border-style: solid; */
+	/* border-width: 5px; */
+	/* border-color: rgba (255, 255, 255, .2) */
+}
+
+#box {
+  /* Define attributes of the box surrounding icons here */
+  padding: 3px;
+}
+
+button, image {
+	background: none;
+	border-style: none;
+	box-shadow: none;
+	color: #999
+}
+
+button {
+	/*padding-left: 4px;
+	padding-right: 4px;*/
+	padding: 0px;
+	color: #eee;
+  font-size: 12px
+}
+
+button:hover {
+	background-color: rgba (255, 255, 255, 0.15);
+	border-radius: 10px;
+}
+
+button:focus {
+	box-shadow: 0 0 2px;
+}

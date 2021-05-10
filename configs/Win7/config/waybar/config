@@ -19,7 +19,6 @@
 		"sway/mode",
 		"sway/workspaces",
 		"idle_inhibitor",
-		"network",
 		"battery",
 		"cpu",
 		"backlight",
@@ -90,13 +89,6 @@
         "max-length": 60,
         "tooltip": false
     },
-	"network": {
-       // "interface": "wlp2s0", // (Optional) To force the use of this interface
-        "format-wifi": "",
-        "format-ethernet": "",
-        "format-disconnected": "ﲁ", //An empty format will hide the module.
-        "tooltip-format-wifi": "{essid} ({signalStrength}%) "
-    },
 	"clock": {
 		"format": "{:%H:%M}",
         "format-alt": "{:%A %e, %B %Y}",
@@ -155,7 +147,7 @@
     },
 	"custom/shutdown": {
 		"format": "",
-		"on-click": "wlogout",
+		"on-click": "nwgbar",
 		"tooltip": false
 	},
 	"custom/reboot": {
@@ -170,7 +162,7 @@
 	},
 	"custom/menu": {
 		"format": " ",
-		"on-click": "rofi -combi-modi drun,ssh -show combi",
+		"on-click": "nwg-menu -d",
 		"tooltip": false
 	},
 

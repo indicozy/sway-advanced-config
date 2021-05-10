@@ -1,0 +1,20 @@
+window {
+}
+
+list {
+    background: none;
+    border-radius: 10px;
+}
+
+entry {
+    background-color: rgba (0, 0, 0, 0.2)
+}
+
+button {
+    background: none;
+    border: none
+}
+
+button:hover {
+    background-color: rgba (255, 255, 255, 0.1)
+}

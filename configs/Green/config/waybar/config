@@ -179,7 +179,7 @@
 	},
 	"custom/menu": {
 		"format": "  ",
-		"on-click": "rofi -combi-modi drun,ssh -show combi",
+		"on-click": "nwg-menu -d",
 		"tooltip": false
 	},
 

@@ -1,0 +1,41 @@
+button, label, image {
+    background: none;
+    border-style: none;
+    box-shadow: none;
+    color: #999;
+}
+
+button {
+    padding: 0px;
+    margin: 0px
+}
+
+button:hover {
+    background-color: rgba (255, 255, 255, 0.1);
+}
+
+button:focus {
+    border-color: rgba (255, 255, 255, 0.4);
+	border-width: 1;
+	border-style: solid;
+}
+
+#searchbox {
+    background: none;
+    border-color: #999;
+    color: #ccc;
+    margin-top: 40px;
+    margin-bottom: 10px
+}
+
+#separator {
+    background-color: rgba(200, 200, 200, 0.5);
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
+#description {
+    margin-bottom: 20px
+}

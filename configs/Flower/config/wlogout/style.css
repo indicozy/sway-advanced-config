@@ -6,7 +6,10 @@
   to {opacity: 1;}
 }
 window {
-  font-size: 26px;
+	background-position: center;
+	background-size: cover;
+ background-image: url("../sway/flower.jpg");
+	font-size: 26px;
   animation: fadeIn;
   animation-duration: 0.5s;
 }
