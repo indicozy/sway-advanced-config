@@ -117,7 +117,7 @@ exec --nostartup-id nm-applet --indicator
 
 #<[# STARTUP ###############################################################
 exec swayidle -w \
-	timeout 900 	'systemctl suspend; swaylock'
+	timeout 900 	'swaylock'
     #before-sleep	'$lock'
 
 exec_always

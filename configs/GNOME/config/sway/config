@@ -121,7 +121,7 @@ exec_always hybridbar
 
 #<[# STARTUP ###############################################################
 exec swayidle -w \
-	timeout 900 	'systemctl suspend; swaylock'
+	timeout 900 	'swaylock'
     #before-sleep	'$lock'
 
 exec_always
@@ -219,7 +219,7 @@ bindsym --to-code
 	$layer1+t exec thunar
 
 	$layer1+Escape			exec $lock
-	$layer2+Escape			exec wlogout
+	$layer2+Escape			exec nwgbar
 	
 }
 
