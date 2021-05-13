@@ -26,7 +26,6 @@ set
 	$term			alacritty
 	$lock 			swaylock
 	#$launcher		rofi -combi-modi drun,ssh, -show combi
-	$screenshot		grim -c -s 2 ~/Pictures/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png
 }
 
 #--- Font ------------------------------------------------------------------
@@ -196,9 +195,13 @@ bindsym --to-code
 	$layer2+c				reload
 	$layer2+e				exec swaymsg exit
 
-	Print					exec grim -c -s 2 ~/Pictures/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png
-	Ctrl+Print				exec grim -g "$(slurp)" -s 2 ~/Pictures/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png
-	Ctrl+Alt+Print			exec grim -g "$(slurp)" - | swappy -f -
+	Print					exec grimshot --notify save screen ~/Pictures/Screenshots/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png
+	Mod4+Print				exec  grimshot --notify save window ~/Pictures/Screenshots/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png
+	Alt+Print				exec grimshot --notify save area ~/Pictures/Screenshots/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png
+	
+	Ctrl+Print				exec grimshot --notify copy screen ~/Pictures/Screenshots/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png
+	Ctrl+Mod4+Print			exec grimshot --notify copy window ~/Pictures/Screenshots/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png
+	Ctrl+Alt+Print			exec grimshot --notify copy area ~/Pictures/Screenshots/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png
 
 	XF86AudioRaiseVolume 	exec --no-startup-id pamixer -i 5
 	XF86AudioLowerVolume	exec --no-startup-id pamixer -d 5
