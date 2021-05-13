@@ -13,14 +13,18 @@ then
 			rm -r ~/Documents/sway_configs_saved/${saved_folders[(($i - 1))]}
 		done
 
-	backupfolders=(alacritty mako nwg-dock nwg-launchers nwg-panel rofi sway swaylock waybar wlogout zathura) 
+	backupfolders=(hybridbar alacritty mako nwg-dock nwg-launchers nwg-panel rofi sway swaylock waybar wlogout zathura) 
 	for i in "${backupfolders[@]}"
 	do
 		mkdir -p ~/Documents/sway_configs_saved/YourDefault1/$i
 		cp -r ~/.config/$i/* ~/Documents/sway_configs_saved/YourDefault1/$i/
 	done
 	mkdir ~/.sway-advanced-config
-	cp -rn ~/sway-advanced-config/* ~/.sway-advanced-config
+	cp -r ~/sway-advanced-config/* ~/.sway-advanced-config
+<<<<<<< HEAD
+=======
+	cp -r ~/sway-advanced-config/.git ~/.sway-advanced-config
+>>>>>>> 5ab9ed17646f3ef25c771ff730ef7f50b66fcb54
 	path=~/.sway-advanced-config
 	echo "######[Auto-Appended] Theme switch script
 

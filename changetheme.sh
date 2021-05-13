@@ -143,8 +143,7 @@ function goback () {
 
 		addNew
 
-		sortOld #function
-
+			sortOld #function
 	else
 		echo "No older folders found"
 		notify-send "No older folders found"
@@ -314,7 +313,6 @@ function wordCheck () {
 		if [ -d latest ]
 		then
 			goback #function
-			killAllProcesses #function	
 			swaymsg reload
 			echo "Back to the previous theme from history."
 			notify-send "Back to the previous theme." "Be careful next time"
