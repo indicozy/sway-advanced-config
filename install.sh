@@ -1,31 +1,26 @@
-if zenity --question --width=400 --title="Theme Changer" --text="Would you like to install the Theme Changer?\nPlease check if you installed all dependencies first"
-then
-	git_path=($(pwd))
-	path=~/.sway-advanced-config
+#! /bin/bash
+# Installer script for sway-advanced-config
+# Developed and maintained by indicozy
+# ver: 1.0
 
+function prepareSavedConfigs {
 	mkdir -p ~/Documents/sway_configs_saved
-	cd ~/Documents/sway_configs_saved
-	saved_folders=($(ls -d YourDefault*))
+	local saved_folders=($(ls -d ~/Documents/sway_configs_saved/YourDefault*))
 		for (( i=${#saved_folders[@]}; i>0; i--))
 		do
-			mv ~/Documents/sway_configs_saved/"${saved_folders[$(( i - 1 ))]}" ~/Documents/sway_configs_saved/YourDefault$(( i + 1))
+			mv "${saved_folders[$(( i - 1 ))]}" ~/Documents/sway_configs_saved/YourDefault$(( i + 1))
 		done
-		for (( i=${#saved_folders[@]}; i>7; i--)) #removes old folers up to 7+1 (1 is newly created) folders
+
+	#update new arrangement of saved folders
+	local saved_folders=($(ls -d ~/Documents/sway_configs_saved/YourDefault*))
+
+		for (( i=${#saved_folders[@]}; i>7; i--)) #removes old folers up to 7+1 (1 is newly created) folder
 		do
-			rm -r ~/Documents/sway_configs_saved/${saved_folders[(($i - 1))]}
+			rm -r ${saved_folders[$(($i - 1))]}
 		done
+}
 
-	backupfolders=(alacritty mako nwg-dock nwg-launchers nwg-panel rofi sway swaylock waybar wlogout zathura) 
-	for i in "${backupfolders[@]}"
-	do
-		mkdir -p ~/Documents/sway_configs_saved/YourDefault1/$i
-		cp -r ~/.config/$i/* ~/Documents/sway_configs_saved/YourDefault1/$i/
-	done
-
-	mkdir $path
-	cd $git_path
-	cp -r configs changetheme.sh install.sh LICENSE README.md $path
-
+function autoAppend {
 	echo "######[Auto-Appended] Theme switch script
 
 bindsym
@@ -46,16 +41,95 @@ bindsym
 
 }
 " >> ~/.config/sway/config
+}
+
+function backupConfig {
+	local backupfolders=(alacritty mako nwg-dock nwg-launchers nwg-panel rofi sway swaylock waybar wlogout zathura) 
+	for i in "${backupfolders[@]}"
+	do
+		mkdir -p ~/Documents/sway_configs_saved/YourDefault/$i > /dev/null
+		cp -r ~/.config/$i/* ~/Documents/sway_configs_saved/YourDefault/$i/
+	done
+}
+
+function installSwitcher {
+	mkdir $path 2> /dev/null
+	cd $git_path
+	cp -r configs changetheme.sh install.sh LICENSE README.md $path
+}
+
+function installApplications {
+
+	if dialog --title "Install Packages" \
+		--yesno "Do you want to install necessary packages first?" 7 50
+	then
+	dialog --title "Note"\
+		--msgbox "Some applications need to be installed by hand. Please check README.md on topic of 'Building from Source'" 10 50
+		clear
+		#add in future sgtk-menu (no theme is using, AUR), nwg-menu (Code), hybridbar (Code), nwg-panel (no theme is using, Code), azote (no theme is using, AUR)
+		sudo pacman -S --needed alacritty mako rofi sway wlogout zathura zenity 
+		yay -S --needed swaylock-effects rofi-lbonn-wayland-git wlogout nwg-launchers
+		echo "Packages are installed, now insalling the script..."
+		sleep 1
+	else
+		clear
+		echo "You chose not to install packages."
+	fi
+}
+
+function distroIsArch {
+	if ! cat /etc/*-release | grep Arch\ Linux > /dev/null
+	then
+		return 1
+	fi
+	return 0
+}
+
+function checkPackageManager {
+	if distroIsArch; then
+		installApplications
+	else
+		echo "Sorry, but your distro is not Arch linux (or script could not find your distro)\nPlease contact me at github.com/indicozy to submit your distro"
+	fi
+}
+
+
+
+####### MAIN
+
+
+if dialog --title "Install Theme Changer" \
+	--yesno "Would you like to install the Theme Changer?\nPlease check if you installed all dependencies first" 10 50
+then
+
+	git_path=($(pwd))
+	echo $git_path
+	if ! [[ "$git_path" == *"sway-advanced-config" ]]; then
+		echo "ERROR: Most likely you are installing from the wrong folder, please check my github: https://github.com/indicozy/sway-advanced-config"
+		exit
+	fi
+
+	path=~/.sway-advanced-config
+
+	checkPackageManager
+
+	prepareSavedConfigs
+
+	backupConfig
+
+	installSwitcher
+
+	autoAppend
 
 	swaymsg reload
 
 	notify-send "You are ready to go!" "Just click Ctrl+Super+Space"
 
-	zenity --info --title="Installation Complete" --width=400 --text="Installation complete! \nYour previous theme before installation was saved in ~/Documents/sway_configs_saved/YourDefault \nJust click Ctrl+Super+Space to start"
+	dialog --title "Installation Complete"\
+		--msgbox "Your previous theme before installation was saved in ~/Documents/sway_configs_saved/YourDefault\n\n\n     Just click Ctrl+Super+Space to start!" 10 50
+
 
 else
-	notify-send "You chose not to install" "No files has been changed"
+	clear
+	echo "You chose not to install. No files has been changed."
 fi
-
-
-
