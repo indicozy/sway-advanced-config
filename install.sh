@@ -67,7 +67,7 @@ function installApplications {
 		--msgbox "Some applications need to be installed by hand. Please check README.md on topic of 'Building from Source'" 10 50
 		clear
 		#add in future sgtk-menu (no theme is using, AUR), nwg-menu (Code), hybridbar (Code), nwg-panel (no theme is using, Code), azote (no theme is using, AUR)
-		sudo pacman -S --needed alacritty mako rofi sway wlogout zathura zenity 
+		sudo pacman -S --needed alacritty mako rofi sway zathura zenity 
 		yay -S --needed swaylock-effects rofi-lbonn-wayland-git wlogout nwg-launchers
 		echo "Packages are installed, now insalling the script..."
 		sleep 1
