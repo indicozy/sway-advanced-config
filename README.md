@@ -1,3 +1,6 @@
+# Project is archived
+The project is moved to [another repo](https://github.com/indicozy/sway-dotfiles-script)!
+
 # sway-dotfiles-script
 A Bash script for Sway Window Manager with preconfigured themes:
 * Windows 98/XP/7/10;
